@@ -17,36 +17,77 @@
 
 <body>
 
-    <script>  
-    function notaSpace (value) {
-        return value != ' ';
-    }
+    <script> 
         
-        
-        let inputArray=[];
-                let hangman = ["nosferatu", "citizen kane", "blazing saddles", "seven samurai"];
-        
-                let randomGen= Math.floor(Math.random() * 4);
-                console.log(randomGen);
-                let randomWord = hangman[randomGen].split(/(?=[\s\S])/u).filter(notaSpace);
-                console.log(randomWord);
-                
-                 {
-                    
-                            document.onkeypress = function (evt) {
-                            evt = evt || window.event;
-                            let charCode = evt.which || evt.keyCode;
-                            let charTyped = String.fromCharCode(charCode);
-        
-                        console.log(charTyped)
-                        console.log(inputArray);
-        
-                        
-        
-        
+        let lives = 5;
+
+        //to get rid of space in arrays
+        function notaSpace(value) {
+            return value != ' ';
+        }
+
+        //creating a set blank array before guessing begins
+        function blankArray(arr, arr2) {
+            for (let i = 0; i < arr2.length; i++) {
+                arr.push("_");
+            }
+            return arr;
+        }
+
+        //comparing inputarray with randomWord
+        function guessing(char, arr, arr2) {
+            for (let i = 0; i <= arr2.length; i++) {
+                if (arr2[i] == char) {
+                    arr[i] = char;
+
+                }
+
+         // counting wrong guesses
+                if (i == arr2.length && arr2[i] != char) {
+                    console.log("wrong!");
+                    return lives--;
+                    console.log(lives);
                     
                 }
+            
+            
+            } 
+            
+            return arr;
+        }
+
+        //hangman answers
+        let hangman = ["nosferatu", "citizen kane", "blazing saddles", "seven samurai"];
+
+
+        //random+izing answers
+        let randomGen = Math.floor(Math.random() * 4);
+        console.log(randomGen);
+        let randomWord = hangman[randomGen].split(/(?=[\s\S])/u).filter(notaSpace);
+        console.log(randomWord);
+
+        //calling blankarray
+        let inputArray = [];
+        blankArray(inputArray, randomWord);
+        console.log(inputArray);
+
+        //guessing characters
+        {
+            if (lives !=0) {
+            document.onkeypress = function (evt) {
+
+                let charCode = evt.which || evt.keyCode;
+                let charTyped = String.fromCharCode(charCode);
+                console.log(charTyped);     
+
+                guessing(charTyped, inputArray, randomWord);
+                console.log(charTyped);
+                console.log(inputArray);
+                console.log(lives);
+
             }
+            }
+        }
     </script>
 </body>
 
