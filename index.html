@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> HANGMAN </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <script>  
+    function notaSpace (value) {
+        return value != ' ';
+    }
+        
+        
+        let inputArray=[];
+                let hangman = ["nosferatu", "citizen kane", "blazing saddles", "seven samurai"];
+        
+                let randomGen= Math.floor(Math.random() * 4);
+                console.log(randomGen);
+                let randomWord = hangman[randomGen].split(/(?=[\s\S])/u).filter(notaSpace);
+                console.log(randomWord);
+                
+                 {
+                    
+                            document.onkeypress = function (evt) {
+                            evt = evt || window.event;
+                            let charCode = evt.which || evt.keyCode;
+                            let charTyped = String.fromCharCode(charCode);
+        
+                        console.log(charTyped)
+                        console.log(inputArray);
+        
+                        
+        
+        
+                    
+                }
+            }
+    </script>
+</body>
+
+</html>
