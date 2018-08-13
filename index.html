@@ -18,8 +18,9 @@
 <body>
 
     <script> 
-        
+
         let lives = 5;
+        let wrongChar = [];
 
         //to get rid of space in arrays
         function notaSpace(value) {
@@ -36,58 +37,83 @@
 
         //comparing inputarray with randomWord
         function guessing(char, arr, arr2) {
-            for (let i = 0; i <= arr2.length; i++) {
+            let position = [];
+
+            //inputing right guesses
+            for (let i = 0; i < arr2.length; i++) {
                 if (arr2[i] == char) {
                     arr[i] = char;
-
+                    position.push(i);
                 }
+            }
 
-         // counting wrong guesses
-                if (i == arr2.length && arr2[i] != char) {
-                    console.log("wrong!");
-                    return lives--;
-                    console.log(lives);
-                    
+            //if wrong guess was already guessed before
+            for (let j = 0; j < wrongChar.length; j++) {
+                if (wrongChar[j] == char) {
+                    position.push(j);
+                    console.log("Already guessed this letter");
                 }
-            
-            
-            } 
-            
+            }
+
+            // counting wrong guesses
+            if (position.length <= 0) {
+                console.log("wrong!");
+                lives--;
+                wrongChar.push(char);
+                return lives;  
+                return wrongChar;
+            }
             return arr;
+        }
+
+        //function that checks if user won
+        function userWin(arr, arr2) {
+            if (arr == arr2) {
+
+            }
         }
 
         //hangman answers
         let hangman = ["nosferatu", "citizen kane", "blazing saddles", "seven samurai"];
 
+        document.write("press any key to strart");
+        document.onkeypress = function (myEvent) {
+            //random+izing answers
+            let randomGen = Math.floor(Math.random() * 4);
+            console.log(randomGen);
+            let randomWord = hangman[randomGen].split(/(?=[\s\S])/u).filter(notaSpace);
+            console.log(randomWord);
 
-        //random+izing answers
-        let randomGen = Math.floor(Math.random() * 4);
-        console.log(randomGen);
-        let randomWord = hangman[randomGen].split(/(?=[\s\S])/u).filter(notaSpace);
-        console.log(randomWord);
+            //calling blankarray
+            let inputArray = [];
+            blankArray(inputArray, randomWord);
 
-        //calling blankarray
-        let inputArray = [];
-        blankArray(inputArray, randomWord);
-        console.log(inputArray);
+            //guessing characters
+            {
+                if (lives != 0) {
+                    document.onkeypress = function (evt) {
+                        // allow letters and whitespaces only.
+                        if (("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ").indexOf(String.fromCharCode(evt.keyCode)) === -1) {
+                            evt.preventDefault();
+                        }
 
-        //guessing characters
-        {
-            if (lives !=0) {
-            document.onkeypress = function (evt) {
+                        let charCode = evt.which || evt.keyCode;
+                        let charTyped = String.fromCharCode(charCode).toLowerCase();
 
-                let charCode = evt.which || evt.keyCode;
-                let charTyped = String.fromCharCode(charCode);
-                console.log(charTyped);     
+                        console.log(charTyped);
+                        // execute character checking function
+                        guessing(charTyped, inputArray, randomWord);
+                        console.log(charTyped);
+                        console.log(inputArray);
+                        console.log(lives);
+                        console.log(wrongChar);
 
-                guessing(charTyped, inputArray, randomWord);
-                console.log(charTyped);
-                console.log(inputArray);
-                console.log(lives);
+                    }
+                    // } else {
 
+                }
             }
-            }
-        }
+        }   
     </script>
 </body>
 
