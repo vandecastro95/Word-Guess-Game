@@ -18,9 +18,32 @@
 <body>
 
     <script> 
-
+        //hangman answers
+        let hangman = ["nosferatu", "citizen kane", "blazing saddles", "seven samurai"];
         let lives = 5;
         let wrongChar = [];
+        let wins = 0;
+        let randomWord = [];
+        let gameStarted = false;
+
+        //starts new game
+        function resetGame() {
+            gameStarted = false;
+            lives = 5;
+            wrongChar = [];
+            randomWord = [];
+            inputArray = [];
+            randomize();
+            blankArray(inputArray, randomWord);
+
+        }
+
+        function randomize() {
+            //random+izing answers
+            let randomGen = Math.floor(Math.random() * 4);
+            console.log(randomGen);
+            randomWord = hangman[randomGen].split(/(?=[\s\S])/u).filter(notaSpace);
+        }
 
         //to get rid of space in arrays
         function notaSpace(value) {
@@ -60,60 +83,67 @@
                 console.log("wrong!");
                 lives--;
                 wrongChar.push(char);
-                return lives;  
+                return lives;
                 return wrongChar;
             }
             return arr;
         }
 
-        //function that checks if user won
-        function userWin(arr, arr2) {
-            if (arr == arr2) {
-
+        //checks if user won
+        function checkWin(arr) {
+            if (arr.indexOf("_") === -1) {
+                console.log("you win")
+                wins++;
+                resetGame();
             }
+
         }
 
-        //hangman answers
-        let hangman = ["nosferatu", "citizen kane", "blazing saddles", "seven samurai"];
+        randomize();
+        //calling blankarray
+        inputArray = [];
+        blankArray(inputArray, randomWord);
 
-        document.write("press any key to strart");
-        document.onkeypress = function (myEvent) {
-            //random+izing answers
-            let randomGen = Math.floor(Math.random() * 4);
-            console.log(randomGen);
-            let randomWord = hangman[randomGen].split(/(?=[\s\S])/u).filter(notaSpace);
-            console.log(randomWord);
+        document.write("press any key to start");
+        document.onkeypress = function (evt) {
 
-            //calling blankarray
-            let inputArray = [];
-            blankArray(inputArray, randomWord);
-
-            //guessing characters
-            {
-                if (lives != 0) {
-                    document.onkeypress = function (evt) {
-                        // allow letters and whitespaces only.
-                        if (("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ").indexOf(String.fromCharCode(evt.keyCode)) === -1) {
-                            evt.preventDefault();
-                        }
-
-                        let charCode = evt.which || evt.keyCode;
-                        let charTyped = String.fromCharCode(charCode).toLowerCase();
-
-                        console.log(charTyped);
-                        // execute character checking function
-                        guessing(charTyped, inputArray, randomWord);
-                        console.log(charTyped);
-                        console.log(inputArray);
-                        console.log(lives);
-                        console.log(wrongChar);
-
-                    }
-                    // } else {
-
-                }
+            if (!gameStarted) {
+                gameStarted = true;
+                console.log(gameStarted);
+                return;
             }
-        }   
+
+            if (gameStarted) {
+
+                if (lives == 0) {
+                    wins = 0;
+                    resetGame();
+                }
+
+                // allow letters and whitespaces only.
+                if (("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ").indexOf(String.fromCharCode(evt.keyCode)) === -1) {
+                    evt.preventDefault();
+                }
+                let charCode = evt.which || evt.keyCode;
+                let charTyped = String.fromCharCode(charCode).toLowerCase();
+
+                // execute character checking function
+                guessing(charTyped, inputArray, randomWord);
+                console.log(charTyped);
+                console.log(inputArray);
+                console.log(lives);
+                console.log(wrongChar);
+                console.log(wins);
+                checkWin(inputArray);
+
+
+            }
+
+
+        }
+
+
+
     </script>
 </body>
 
