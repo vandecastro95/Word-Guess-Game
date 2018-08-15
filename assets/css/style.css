@@ -1,0 +1,37 @@
+
+body {
+    background: gray;
+}
+
+.imageSmall {
+    height: 100px;
+    width: 125px;
+}
+
+.spaced {
+    letter-spacing: 4px;
+}
+
+.contentBox {
+    background-image: url("../images/pressany.jpg");
+    height: 400px;
+}
+
+.hangman {
+    height: 100px;
+}
+
+.alike {
+    font-family: 'Alike Angular', serif;
+}
+
+.negativetopmargin {
+    margin-top: -25px;
+}
+
+.backgroundRed {
+    background: gray;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Alike+Angular|Asul|Concert+One|Eczar|Fruktur|Hanalei+Fill|Kavoon|Neuton|Space+Mono|Tillana|Work+Sans')
+

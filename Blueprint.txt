@@ -1,0 +1,31 @@
+HANGMAN
+
+THEME: CLASSIC MOVIES
+
+king kong
+nosferatu
+citizen kane
+blazing saddles
+seven samurai
+
+
+
+DR strangelove or how i learned to stop worrying and love the bomb
+
+document write
+
+press any key to play
+
+for loop
+	for loop
+		document write 
+	
+
+
+1. functions 
+	random
+2. checker object in array
+
+
+
+make the answer an array with _ _ _ _ _ _ _
