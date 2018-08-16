@@ -1,0 +1,61 @@
+
+body {
+    background: #EEEEEE;
+    font-family: 'Alike Angular', serif;
+}
+
+.imageSmall {
+    height: 120px;
+    width: 150px;
+}
+
+.spaced {
+    letter-spacing: 4px;
+}
+
+.hangman {
+    height: 100px;
+}
+
+.alike {
+    font-family: 'Alike Angular', serif;
+}
+
+.negativetopmargin {
+    margin-top: -25px;
+}
+
+.backgroundRed {
+    background: gray;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Alike+Angular|Asul|Concert+One|Eczar|Fruktur|Hanalei+Fill|Kavoon|Neuton|Space+Mono|Tillana|Work+Sans');
+
+.whiteBG {
+    background: #ffffff;
+}
+
+.orangeBG {
+    background: #FA320A;
+}
+
+.grayLine {
+    background: #757575;
+    height: 20px;
+}
+
+.text-yellow {
+    color: #FDE51B;
+}
+
+.contentBox {
+    height: 400px;
+}
+
+.simpsons {
+    background: white url("../images/pressany.gif") no-repeat center;;
+}
+
+.godfather {
+    background: white url("../images/godfather.gif") no-repeat center;;
+}
