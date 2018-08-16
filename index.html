@@ -18,49 +18,54 @@
 
 <body>
     <div class="container mt-5">
-        <div class="row d-flex justify-content-end mb-3">
-            <div class="container-fluid bg-light container1 hangman  d-flex justify-content-start">
+        <div class="row d-flex justify-content-end orangeBG">
+            <div class="container-fluid container1 hangman  d-flex justify-content-start">
                 <div class="row">
                     <div class="col-5">
                         <img class="imageSmall d-inline" src="assets/images/images.png">
                     </div>
                     <div class="col-7 d-inline">
                         <div class="row">
-                            <h1 class="alike display-4 text-danger mr-1"><strong>Hangman</strong></h1>
+                            <h1 class="alike display-4 text-white mr-1 mt-2"><strong>Hangman</strong></h1>
                         </div>
                         <div class="row">
-                            <h5 class="text-black negativetopmargin">       Classic Movies</h5>
+                            <h5 class="text-yellow negativetopmargin ml-5 pl-5">Classic Movies</h5>
                         </div>
+                    
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container backgroundRed bg-light">
+        </div> 
+        <div class="row grayLine mb-3">
+            <div class="col-12 d-flex justify-content-start ml-5"></div>
+
+        </div> 
+        <div class="container backgroundRed whiteBG border-0">
             <div class="row">
                 <div class="col-6">
                     <div class="row w-100 d-flex justify-content-end">
-                        <div class="col-2">
+                        <div class="col-3">
                             <div class="row mt-3">
-                                <h6>Lives:</h6>
+                                <h6>Lives: <span class="jsLives"></span></h6>
                             </div>
-                            <div class="row">
-                                <h6>Wins:</h6>
+                            <div class="row mb-5">
+                                <h6>Wins: <span class="jsWins"></span></h6>
                             </div>
                         </div>
                     </div>
                     <div class="row w-100 ">
-                        <div class="col-12 display-4 text-monospace. d-flex justify-content-center">
-                            <p class="spaced">________________</p>
+                        <div class="col-12 text-monospace d-flex justify-content-center">
+                            <h3 class=" jsinputArray text-monospace"></h3>
                         </div>
                     </div>
 
                     <div class="row w-100">
-                        <div class="col-7 float-left">
-                            <h6>letters already guessed:</h6>
+                        <div class="col-7 float-left mt-5">
+                            <h6>letters already guessed:<span class=" jswrongChar"></span></h6>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 contentBox overflow-hidden">
+                <div class="col-6 contentBox overflow-hidden simpsons" id="gif">
 
                 </div>
             </div>
@@ -68,8 +73,8 @@
     </div>
 
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/javascript/game.js"></script>
 </body>
-<script src="assets/javascript/game.js"></script>
 
 </html>

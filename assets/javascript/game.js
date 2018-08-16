@@ -1,11 +1,13 @@
 //hangman answers
-let hangman = ["nosferatu", "citizen kane", "blazing saddles", "seven samurai"];
+let hangman = ["the godfather", "citizen kane", "blazing saddles", "fight club", "the lion king", "the godfather" ];
 let lives = 5;
 let wrongChar = [];
 let wins = 0;
 let randomWord = [];
 let gameStarted = false;
 let charTyped;
+
+//change gif depending on hangman word
 
 //starts new game
 function resetGame() {
@@ -14,14 +16,13 @@ function resetGame() {
     wrongChar = [];
     randomWord = [];
     inputArray = [];
-    randomize();
-    blankArray(inputArray, randomWord);
+    let randomGen;
 
 }
 
 function randomize() {
     //random+izing answers
-    let randomGen = Math.floor(Math.random() * 4);
+    randomGen = Math.floor(Math.random() * 5);
     console.log(randomGen);
     randomWord = hangman[randomGen].split(/(?=[\s\S])/u).filter(notaSpace);
 }
@@ -70,35 +71,60 @@ function guessing(char, arr, arr2) {
     return arr;
 }
 
+//function that displays js values in html
+
+function displayValues() {
+    document.querySelector('.jsLives').innerText = lives;
+    document.querySelector('.jsWins').innerText = wins;
+    document.querySelector('.jsinputArray').innerText = inputArray.join(" ");
+    document.querySelector('.jswrongChar').innerText = wrongChar.join(" ");
+}
+
+// function changeGif () {
+//     $(function(){
+//         if(randomGen == 0)
+//         {
+//             document.querySelector('.contentBox').removeClass( "simpsons").addClass("godfather");
+//         }
+        
+//     });    
+// } 
+
 //checks if user won
 function checkWin(arr) {
+    
+    displayValues();
+
     if (arr.indexOf("_") === -1) {
-        console.log("you win")
         wins++;
+        // changeGif ()
+        
+        document.querySelector('.jsinputArray').innerText = hangman[randomGen]; 
+        resetGame();
+        
+        
+    }
+
+    if (lives == 0) {
+        wins = 0;
+        arr = randomWord;
+        document.querySelector('.jsinputArray').innerText = hangman[randomGen]; 
+        
         resetGame();
     }
 
+    
 }
 
-    document.onkeypress = function (evt) {
 
-    if (gameStarted == false) {
-        gameStarted = true;
-        console.log(gameStarted);
-        randomize();
-
-        //calling blankarray
-        inputArray = [];
-        blankArray(inputArray, randomWord);
-        return;
-    }
+    document.querySelector('.jsinputArray').innerText = "Press any key to start!";
+    document.onkeyup = function (evt) {
 
     if (gameStarted == true) {
+        displayValues();
+        
 
-        if (lives == 0) {
-            wins = 0;
-            resetGame();
-        }
+        
 
         // allow letters and whitespaces only.
         if (!/[a-z]/i.test(String.fromCharCode(evt.which))) {
@@ -116,9 +142,28 @@ function checkWin(arr) {
             console.log(lives);
             console.log(wrongChar);
             console.log(wins);
-            checkWin(inputArray);
         }
 
+        
+        
+        checkWin(inputArray);
+        
+        
+    } 
 
+    // if (gameStarted == false) 
+    else {
+        
+        randomize();
+
+        //calling blankarray
+        inputArray = [];
+        blankArray(inputArray, randomWord);
+        gameStarted = true;
+        displayValues();
+        return;
+        
     }
+
+    
 }

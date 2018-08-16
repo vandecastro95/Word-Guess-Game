@@ -1,20 +1,16 @@
 
 body {
-    background: gray;
+    background: #EEEEEE;
+    font-family: 'Alike Angular', serif;
 }
 
 .imageSmall {
-    height: 100px;
-    width: 125px;
+    height: 120px;
+    width: 150px;
 }
 
 .spaced {
     letter-spacing: 4px;
-}
-
-.contentBox {
-    background-image: url("../images/pressany.jpg");
-    height: 400px;
 }
 
 .hangman {
@@ -33,5 +29,33 @@ body {
     background: gray;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Alike+Angular|Asul|Concert+One|Eczar|Fruktur|Hanalei+Fill|Kavoon|Neuton|Space+Mono|Tillana|Work+Sans')
+@import url('https://fonts.googleapis.com/css?family=Alike+Angular|Asul|Concert+One|Eczar|Fruktur|Hanalei+Fill|Kavoon|Neuton|Space+Mono|Tillana|Work+Sans');
 
+.whiteBG {
+    background: #ffffff;
+}
+
+.orangeBG {
+    background: #FA320A;
+}
+
+.grayLine {
+    background: #757575;
+    height: 20px;
+}
+
+.text-yellow {
+    color: #FDE51B;
+}
+
+.contentBox {
+    height: 400px;
+}
+
+.simpsons {
+    background: white url("../images/pressany.gif") no-repeat center;;
+}
+
+.godfather {
+    background: white url("../images/godfather.gif") no-repeat center;;
+}
